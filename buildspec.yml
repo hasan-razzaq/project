@@ -1,0 +1,32 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      nodejs: 12
+      python: 3.7
+    commands:
+      - pwd
+      - cd ..
+      - wget https://www.python.org/ftp/python/2.7.16/Python-2.7.16.tgz
+      - tar xzf Python-2.7.16.tgz
+      - cd Python-2.7.16
+      - ./configure --enable-optimizations
+      - make altinstall
+      - /usr/local/bin/python2.7 -V
+      - cd ..
+      - ls
+      - cd src
+      - pwd
+      - npm install
+      - rm -rf node_modules/websocket/.git
+      - npm install -g serverless
+      - LD_LIBRARY_PATH=/usr/local/lib64/:$LD_LIBRARY_PATH
+      - export LD_LIBRARY_PATH
+#      - npm i -D serverless-dotenv-plugin
+  build:
+    commands:
+      - serverless deploy -s stag
+
+  post_build:
+    commands:
+#      - aws s3 rm s3://terravirtua-lts-deploy-prod --recursive
