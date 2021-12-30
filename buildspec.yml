@@ -13,7 +13,7 @@ phases:
       - npm install -g serverless
   build:
     commands:
-      - serverless deploy -s stag
+      - serverless deploy
 
   post_build:
     commands:
