@@ -24,7 +24,7 @@ provider:
     SAMPLE_ENV_VAR: ${env:SAMPLE_ENV_VAR}
 
 functions:
-  hello-new:
+  hello:
     handler: handler.hello
     events:
       - http:
