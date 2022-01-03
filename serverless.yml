@@ -5,6 +5,10 @@ custom:
     number: 10
 
 service: serverless-nodejs-starter
+service: myService
+disabledDeprecations:
+  - CODE_1 # To disable specific deprecation with code "CODE_1"
+  - '*' # To disable all deprecation messages
 plugins:
   - serverless-bundle # Package our functions with Webpack
   - serverless-dotenv-plugin # Load .env as environment variables
